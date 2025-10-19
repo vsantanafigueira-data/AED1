@@ -1,0 +1,6 @@
+# Ignorar configurações locais do VS Code
+.vscode/
+output/
+*.exe
+*.o
+*.obj
