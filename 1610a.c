@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #define MAX 10005
-#define MAXG 100  // limite do grau máximo por nó
+#define MAXG 100  // limite de grau
 
 int visitado[MAX];
 int ciclo;
@@ -12,7 +12,7 @@ int adj[MAX][MAXG];
 int grau[MAX];
 
 void dfs(int u) {
-    visitado[u] = 1; // em processamento
+    visitado[u] = 1; 
 
     for (int i = 0; i < grau[u]; i++) {
         int v = adj[u][i];
@@ -20,11 +20,11 @@ void dfs(int u) {
         if (visitado[v] == 0) {
             dfs(v);
         } else if (visitado[v] == 1) {
-            ciclo = 1; // ciclo detectado
+            ciclo = 1;
         }
     }
 
-    visitado[u] = 2; // processado
+    visitado[u] = 2;
 }
 
 int main() {
@@ -34,7 +34,7 @@ int main() {
     while (T--) {
         scanf("%d %d", &n, &m);
 
-        // limpa o grafo e vetores auxiliares
+        // limpa lixo
         for (int i = 1; i <= n; i++) {
             grau[i] = 0;
             visitado[i] = 0;
@@ -43,12 +43,11 @@ int main() {
             }
         }
 
-        // leitura das dependências (evita arestas duplicadas)
         for (int i = 0; i < m; i++) {
             int a, b;
             scanf("%d %d", &a, &b);
 
-            // verifica se já existe a aresta a -> b
+            // verificação de arestas existentes
             int existe = 0;
             for (int j = 0; j < grau[a]; j++) {
                 if (adj[a][j] == b) {
